@@ -17,20 +17,20 @@ void setup() {
 }
 
 void loop() {
-  DistanceSensor_A02YYUW_MEASSURE_STATUS meassureStatus;
+  DistanceSensor_A02YYUW_MEASSUREMENT_STATUS meassurementStatus;
 
   // Gets the distance from the sensor and if the measurement is wrong, it retries to get the distance
   do {
-    meassureStatus = distanceSensor.meassure();
+    meassurementStatus = distanceSensor.meassure();
 
-    if (meassureStatus == DistanceSensor_A02YYUW_MEASSURE_STATUS_OK) {
+    if (meassurementStatus == DistanceSensor_A02YYUW_MEASSUREMENT_STATUS_OK) {
       Serial.print("Distance: ");
       Serial.println(distanceSensor.getDistance());
     } else {
       Serial.print("Error:" );
-      Serial.println(meassureStatus);
+      Serial.println(meassurementStatus);
     }
-  } while (meassureStatus != DistanceSensor_A02YYUW_MEASSURE_STATUS_OK);
+  } while (meassurementStatus != DistanceSensor_A02YYUW_MEASSUREMENT_STATUS_OK);
 
   delay(1000);
 }

@@ -11,7 +11,7 @@ DistanceSensor_A02YYUW::DistanceSensor_A02YYUW(Stream * stream, unsigned int min
 
 }
 
-DistanceSensor_A02YYUW_MEASSURE_STATUS DistanceSensor_A02YYUW::meassure() {
+DistanceSensor_A02YYUW_MEASSUREMENT_STATUS DistanceSensor_A02YYUW::meassure() {
   unsigned long startTime = millis();
   unsigned char data[4] = {};
   int i = 0;
@@ -39,26 +39,26 @@ DistanceSensor_A02YYUW_MEASSURE_STATUS DistanceSensor_A02YYUW::meassure() {
   }
 
   if (i != 4) {
-    return DistanceSensor_A02YYUW_MEASSURE_STATUS_ERROR_SERIAL;
+    return DistanceSensor_A02YYUW_MEASSUREMENT_STATUS_ERROR_SERIAL;
   }
 
   if (!_checkSum(data)) {
-  	return DistanceSensor_A02YYUW_MEASSURE_STATUS_ERROR_CHECK_SUM;
+  	return DistanceSensor_A02YYUW_MEASSUREMENT_STATUS_ERROR_CHECK_SUM;
   }
 
   meassuredDistance = ((data[1] << 8) + data[2]);
 
   if (meassuredDistance < _minDistance) {
-  	return DistanceSensor_A02YYUW_MEASSURE_STATUS_ERROR_MIN_LIMIT;
+  	return DistanceSensor_A02YYUW_MEASSUREMENT_STATUS_ERROR_MIN_LIMIT;
   }
 
   if (meassuredDistance > _maxDistance) {
-	return DistanceSensor_A02YYUW_MEASSURE_STATUS_ERROR_MAX_LIMIT;
+	return DistanceSensor_A02YYUW_MEASSUREMENT_STATUS_ERROR_MAX_LIMIT;
   }
 
   _distance = meassuredDistance;
 
-  return DistanceSensor_A02YYUW_MEASSURE_STATUS_OK;
+  return DistanceSensor_A02YYUW_MEASSUREMENT_STATUS_OK;
 }
 
 unsigned int DistanceSensor_A02YYUW::getDistance() {
