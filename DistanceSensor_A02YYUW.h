@@ -23,19 +23,19 @@ enum {
 typedef int DistanceSensor_A02YYUW_MEASSUREMENT_STATUS;
 
 class DistanceSensor_A02YYUW {
-	public:
-		DistanceSensor_A02YYUW(Stream * _stream);
-		DistanceSensor_A02YYUW(Stream * _stream, unsigned int minDistance, unsigned int maxDistance);
-		DistanceSensor_A02YYUW_MEASSUREMENT_STATUS meassure();
-		unsigned int getDistance();
+  public:
+    DistanceSensor_A02YYUW(Stream * _stream);
+    DistanceSensor_A02YYUW(Stream * _stream, unsigned int minDistance, unsigned int maxDistance);
+    DistanceSensor_A02YYUW_MEASSUREMENT_STATUS meassure();
+    unsigned int getDistance();
 
-	private:
-		Stream * _stream;
-		unsigned int _minDistance;
-		unsigned int _maxDistance;
-		unsigned int _distance;
-		bool _checkSum(unsigned char data[]);
-		void _flushSerialInput();
+  private:
+    Stream * _stream;
+    unsigned int _minDistance;
+    unsigned int _maxDistance;
+    unsigned int _distance;
+    bool _checkSum(unsigned char data[]);
+    void _flushSerialInput();
 };
 
 #endif

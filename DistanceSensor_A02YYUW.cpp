@@ -1,12 +1,12 @@
 #include "DistanceSensor_A02YYUW.h"
 
 DistanceSensor_A02YYUW::DistanceSensor_A02YYUW(Stream * stream): DistanceSensor_A02YYUW(stream, MIN_DISTANCE, MAX_DISTANCE) {
-	
+
 }
 
 DistanceSensor_A02YYUW::DistanceSensor_A02YYUW(Stream * stream, unsigned int minDistance, unsigned int maxDistance) {
   _stream = stream;
-	_minDistance = minDistance;
+  _minDistance = minDistance;
   _maxDistance = maxDistance;
 
 }
@@ -43,17 +43,17 @@ DistanceSensor_A02YYUW_MEASSUREMENT_STATUS DistanceSensor_A02YYUW::meassure() {
   }
 
   if (!_checkSum(data)) {
-  	return DistanceSensor_A02YYUW_MEASSUREMENT_STATUS_ERROR_CHECK_SUM;
+    return DistanceSensor_A02YYUW_MEASSUREMENT_STATUS_ERROR_CHECK_SUM;
   }
 
   meassuredDistance = ((data[1] << 8) + data[2]);
 
   if (meassuredDistance < _minDistance) {
-  	return DistanceSensor_A02YYUW_MEASSUREMENT_STATUS_ERROR_MIN_LIMIT;
+    return DistanceSensor_A02YYUW_MEASSUREMENT_STATUS_ERROR_MIN_LIMIT;
   }
 
   if (meassuredDistance > _maxDistance) {
-	return DistanceSensor_A02YYUW_MEASSUREMENT_STATUS_ERROR_MAX_LIMIT;
+    return DistanceSensor_A02YYUW_MEASSUREMENT_STATUS_ERROR_MAX_LIMIT;
   }
 
   _distance = meassuredDistance;
@@ -67,7 +67,7 @@ unsigned int DistanceSensor_A02YYUW::getDistance() {
 
 
 bool DistanceSensor_A02YYUW::_checkSum(unsigned char data[]) {
-	return ((data[0] + data[1] + data[2])& 0x00FF) == data[3];
+  return ((data[0] + data[1] + data[2])& 0x00FF) == data[3];
 }
 
 void DistanceSensor_A02YYUW::_flushSerialInput() {
