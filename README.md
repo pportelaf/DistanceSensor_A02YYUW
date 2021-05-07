@@ -33,7 +33,5 @@ unsigned int getDistance();
 | DistanceSensor_A02YYUW_MEASSUREMENT_STATUS_ERROR_MIN_LIMIT |   -3  | Error distance above the limit  |
 | DistanceSensor_A02YYUW_MEASSUREMENT_STATUS_ERROR_SERIAL    |   -4  | Error with Serial               |
 
-https://www.arduino.cc/en/Guide/Libraries
-
 ## Installation
 https://www.arduino.cc/en/Guide/Libraries
