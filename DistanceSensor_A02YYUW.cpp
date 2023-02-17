@@ -71,8 +71,6 @@ bool DistanceSensor_A02YYUW::_checkSum(unsigned char data[]) {
 }
 
 void DistanceSensor_A02YYUW::_flushSerialInput() {
-  unsigned long startTime = millis();
-
   while (_stream->available()) {
     _stream->read();
   }
