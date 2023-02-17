@@ -12,7 +12,6 @@ DistanceSensor_A02YYUW::DistanceSensor_A02YYUW(Stream * stream, unsigned int min
 }
 
 DistanceSensor_A02YYUW_MEASSUREMENT_STATUS DistanceSensor_A02YYUW::meassure() {
-  unsigned long startTime = millis();
   unsigned char data[4] = {};
   int i = 0;
   unsigned int meassuredDistance;
